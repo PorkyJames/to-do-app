@@ -42,3 +42,15 @@ Nice, so then let's move onto setting up the DB / Creating the model
 - Lastly! We need to add it to our INSTALLED_APPS in our settings.py.
 
 Once that's completed, run python manage.py makemigrations / migrate and check out sqlite3 db to see if our task populated.
+- There was a big issue with my backend module not showing up when I was trying to seed using python todo/seed.py. So I created an extra line of
+- Code where I established the default path in my seed file: sys.path.append('/home/kwanj/projects/To-Do/my_project') 
+
+Next I need to start on the API framework now for the CRUD operation.
+- Let's start by installing djangorestframework and django-cors-headers
+- pipenv install djangorestframework django-cors-headers
+- Then lets' add them to our INSTALLED_APPS and add corsheaders to our Middleware
+
+Then we need to create serializers
+- Serializers are ways to convert model instances to JSON so that the frontend can work with the received data.
+- start by creating a serializers.py file within the todo app
+
