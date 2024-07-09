@@ -56,3 +56,11 @@ Then we need to create serializers
 
 
 Now let's get working on the frontend. Navigate towards the root directory and npx create-react-app frontend
+- I want to create a few components
+- AddTaskForm (Create)
+- AllTasksList (Read)
+- EditTaskModal (Update)
+- DeleteTaskModal (Delete)
+
+- Since I'm used to managing states with only Redux, I want to be able to stray away from it. 
+- I'll need to install axios to help me with fetching the API from the django backend.
