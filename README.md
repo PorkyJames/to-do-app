@@ -54,3 +54,5 @@ Then we need to create serializers
 - Serializers are ways to convert model instances to JSON so that the frontend can work with the received data.
 - start by creating a serializers.py file within the todo app
 
+
+Now let's get working on the frontend. Navigate towards the root directory and npx create-react-app frontend
