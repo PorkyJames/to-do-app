@@ -15,14 +15,13 @@ const AddTaskForm = ( { addTask }) => {
     
     return (
         <>
-            <h1>This is my Add Task Form</h1>
-
+        
             <form onSubmit={handleSubmit}>
                 <input
                     type='text'
                     value={userInput}
                     onChange={(e) => setUserInput(e.target.value)}
-                    placeholder="Whatchu need to get done?"
+                    placeholder="Enter a Task"
                 />
 
                 <button type='submit'>Add New Task</button>
