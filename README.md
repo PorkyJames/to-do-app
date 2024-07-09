@@ -85,16 +85,17 @@ npx create-react-app
 - DeleteTaskModal (Delete)
 
 - Since I'm used to managing states with only Redux, I want to be able to stray away from it. 
-- I'll need to install axios to help me with fetching the API from the django backend.
+- I've decided to not utilize axios and will instead use parent and child components. I know i'm not the greatest at them, but they really help with reusability and simplicity. 
 ```
 
 Let's start by creating the Frontend Components in their own folders so I can add the CSS to it. I'm going to do the classic way of CSS
 and not utilize tailwind or bootstrap as that's an additional learning curve. 
 
-I set up all of the components in their own file along with the css file that they'll be 
-importing the styling from. 
-- AddTaskForm / AddTaskForm.css + AddTaskForm.jsx
-etc. etc.
+```
+I set up all of the components in their own file along with the css file that they'll be importing the styling from. 
+- AddTaskForm / AddTaskForm.css + AddTaskForm.jsx etc. etc.
+- One thought came up to me. I don't want to make my app.js the parent component and clutter it up. So let's create a parent component <Taskmanager> that allows us to manage all the tasks. 
 
+```
 
 
