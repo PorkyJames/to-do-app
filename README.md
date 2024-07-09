@@ -32,3 +32,13 @@ formats such as JSON. This is basically like the app.py in Flask where we're ret
 - def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 - to call the view, we need to map it to a URL
+
+
+Nice, so then let's move onto setting up the DB / Creating the model
+- First we're going to make sure that the db is set up correctly. Since this is a small time project, we want to be able to 
+- use SQLite3 instead of Postgres. Fortunately, in our settings.py, SQLite3 is already set up for us when we started our django app
+- if we were to use Postgres instead, we'd need to make some changes to our DATABASE variable, but we'll leave as it is for now.
+- THen we need to create our Model for our Task. Once we've created our Task Model, we need to register it with our admin.py.
+- Lastly! We need to add it to our INSTALLED_APPS in our settings.py.
+
+Once that's completed, run python manage.py makemigrations / migrate and check out sqlite3 db to see if our task populated.
