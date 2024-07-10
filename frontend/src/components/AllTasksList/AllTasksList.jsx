@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //! This component will list all the tasks that our user creates or has already been created in our database
 
-const AllTasksList = ( {tasks, onOpenModal } ) => {
+const AllTasksList = ( {tasks, onEdit } ) => {
 
     //! If the tasks length is greater than 0, then we'll create an unorderedlist and map through listing each task and
     //! its index then throw them into a list where each key is the index and the task itself is displayed.
@@ -14,7 +14,8 @@ const AllTasksList = ( {tasks, onOpenModal } ) => {
                 <ul>
                     {tasks.map(task => (
                     <li key={task.id}>
-                        {task.title}
+                        {task.title} - {task.description || 'No description'} - ({task.completed ? 'Completed' : 'Pending'})
+                        <button onClick={() => onEdit(task)}>Edit</button> 
                     </li>
                 ))}
                 </ul>
