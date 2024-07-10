@@ -1,0 +1,48 @@
+/* Center the Modal and make the background grey */
+.delete-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 1050; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The modal itself */
+.deleteModal {
+    position: relative;
+    width: 80%; 
+    max-width: 500px; 
+    margin: auto;
+    padding: 20px;
+    background-color: #fff; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    z-index: 1051; 
+    border-radius: 8px; 
+}
+
+/* The items inside of the modal */
+.delete-modal-content {
+    text-align: center; 
+}
+
+/* Freaking buttons */
+.deleteModal button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.deleteModal button:hover {
+    background-color: #0056b3;
+}
+

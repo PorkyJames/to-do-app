@@ -4,13 +4,14 @@ import AllTasksList from "../AllTasksList/AllTasksList";
 import EditTaskModal from "../EditTaskModal/EditTaskModal"
 import DeleteTaskModal from "../DeleteTaskModal/DeleteTaskModal";
 
+import "./TaskManager.css"
 
 const TaskManager = () => {
 
-    //! List of tasks that we'll map through
     const [tasks, setTasks] = useState([]);
-    const [currentTask, setCurrentTask] = useState(null);  // Task to edit
+    const [currentTask, setCurrentTask] = useState(null);
     const [isEditModalOpen, setEditModalOpen] = useState(false);
+    const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
 
     //! Modal Logic
     const openEditModal = (task) => {
@@ -22,16 +23,26 @@ const TaskManager = () => {
         setEditModalOpen(false);
     };
 
+    const openDeleteModal = (task) => {
+        setCurrentTask(task);
+        setDeleteModalOpen(true);
+    };
+
+    const closeDeleteModal = () => {
+        setDeleteModalOpen(false);
+    };
+
     //! Fetch all Tasks from backend
+    //! Create the url then fetch it. If there are errors, deal with that edge case.
+    //! Then we set the tasks to whatever the data that's been provided.
+    //! Remember, this useEffect will fetch the server data with all of my previous tasks
     const fetchTasks = async () => {
         const url = 'http://localhost:8000/api/todos/';
         try {
             const res = await fetch(url);
 
-            if (!res.ok) {
-                throw new Error('Failed to fetch tasks');
-            }
-
+            if (!res.ok) throw new Error('Failed to fetch tasks');
+            
             const tasksData = await res.json();
 
             setTasks(tasksData);  
@@ -41,13 +52,14 @@ const TaskManager = () => {
         }
     };
 
-    // useEffect to call fetchTasks when the component mounts
     useEffect(() => {
         fetchTasks();
     }, []); 
 
     //! Add a task to our list of tasks from the backend via the frontend
-    const addTask = async (taskTitle) => {
+    //! We take taskTitle and description that's been input by the user
+    //! Then we add it to our request in a JSON body. Then we add that to our existing tasks
+    const addTask = async (taskTitle, description) => {
         const url = 'http://localhost:8000/api/todos/';
         try {
             const res = await fetch(url, {
@@ -57,17 +69,15 @@ const TaskManager = () => {
                 },
                 body: JSON.stringify({
                     title: taskTitle, 
-                    description: "",   
+                    description: description,   
                     completed: false,  
                 })
             });
     
-            if (!res.ok) {
-                throw new Error('Failed to add the task');
-            }
+            if (!res.ok) throw new Error('Failed to add the task');
     
             const newestTask = await res.json();
-            setTasks(listedTasks => [...listedTasks, newestTask]);
+            setTasks(existingTasks => [...existingTasks, newestTask]);
     
         } catch (error) {
             console.error('Error adding task:', error);
@@ -75,10 +85,15 @@ const TaskManager = () => {
     };
 
     //! Edit / Save the new task that's been edited
+    //! Fetch from url the existing task based on the task.id
+    //! Then we re-save that in a json format. Then we reset that task that's been updated.
+    //! We go through each task and check if the taskId matches the id of the task that's been updated
+    //! If true, then the task was updated. If false, then it wasn't the one we updated.
+    //! Then we close the edit modal right after everything is updated.
     const saveTask = async (updatedTask) => {
         const url = `http://localhost:8000/api/todos/${updatedTask.id}/`
         try {
-            const response = await fetch(url, {
+            const res = await fetch(url, {
                 method: 'PUT', 
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,26 +101,49 @@ const TaskManager = () => {
                 body: JSON.stringify(updatedTask)
             });
     
-            if (!response.ok) {
-                throw new Error('Failed to update the task');
-            }
-    
-            const savedTask = await response.json(); 
+            if (!res.ok) throw new Error('Failed to update the task');
+            
+            const savedTask = await res.json(); 
+
             setTasks(prevTasks => prevTasks.map(task => task.id === savedTask.id ? savedTask : task));
+
             closeEditModal();
         } catch (error) {
             console.error('Error updating task:', error);
         }
     };
 
+    //! Delete a task that exists in the list
+    //! Fetch the url via taskId and then delete that punk.
+    //! Then re-update the state of our tasks by filtering for any tasks with the same id.
+    //! Then we close that modal once we're done deleting. 
+    const deleteTask = async (taskId) => {
+        const url = `http://localhost:8000/api/todos/${taskId}/`;
+        try {
+            const res = await fetch(url, {
+                method: 'DELETE',
+            });
+
+            if (!res.ok) throw new Error('Failed to delete the task');
+            
+            setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+
+            closeDeleteModal();
+
+        } catch (error) {
+            console.error('Error deleting task:', error);
+        }
+    }
 
     return (
-        <>
-            <h1> TaskManager Component!</h1>
-            
-            <AddTaskForm addTask={addTask}/>
+        <>  
+            <div className="task-manager-title">
+                <h1>My Day</h1>
+            </div>     
 
-            <AllTasksList tasks={tasks} onEdit={openEditModal} />
+            <AllTasksList tasks={tasks} onEdit={openEditModal} onDelete={openDeleteModal} />
+
+            <AddTaskForm addTask={addTask}/>
 
             {currentTask && (
                 <EditTaskModal
@@ -113,6 +151,15 @@ const TaskManager = () => {
                     isOpen={isEditModalOpen}
                     onClose={closeEditModal}
                     onSave={saveTask}
+                />
+            )}
+
+            {currentTask && (
+                <DeleteTaskModal
+                    task={currentTask}
+                    isOpen={isDeleteModalOpen}
+                    onClose={closeDeleteModal}
+                    onDelete={deleteTask}
                 />
             )}
 

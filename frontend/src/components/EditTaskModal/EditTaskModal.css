@@ -1,0 +1,62 @@
+/* The background and the position of the card */
+.edit-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    z-index: 1050; 
+}
+
+/* The actual modal itself */
+.edit-modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); 
+    width: 500px; 
+    z-index: 1051;
+}
+
+/* The items within the modal */
+.edit-modal-content {
+    text-align: center; 
+}
+
+/* The Text / Checkbox inputs */
+.edit-modal-content input[type="text"],
+.edit-modal-content input[type="checkbox"] {
+    margin: 10px 0; 
+    padding: 8px; 
+    width: 90%; 
+    box-sizing: border-box; 
+}
+
+/* The freaking buttons */
+.edit-modal-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF; 
+    color: white;
+    cursor: pointer;
+}
+
+.edit-modal-content button:hover {
+    background-color: #0056b3; 
+}
+
+/* The &times button */
+.edit-close-button {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px; 
+    color: #707070;
+}

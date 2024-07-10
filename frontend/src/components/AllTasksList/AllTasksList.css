@@ -1,0 +1,77 @@
+/* The card that surrounds the entirety of the to do list tasks */
+.task-list-container {
+    width: 80%; 
+    max-height: 750px; /* limit height for scroll effect */
+    overflow-y: auto; /* creates the scroll effect*/
+    max-width: 1000px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: lightblue;
+    box-shadow: 0 4px 8px rgba(0,0,0,.3);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+/* All of the tasks cards put together in one giant mesh */
+.tasks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+}
+
+/* Each individual task card itself */
+.task-card {
+    background-color: #f3f4f6; 
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* The information that's displayed in each card */
+.task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px; 
+}
+
+.task-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.task-description {
+    font-size: 14px;
+    color: #668; 
+}
+
+.task-status {
+    font-size: 14px;
+    color: #4CAF50;
+}
+
+.task-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.edit-button {
+    background-color: #007BFF; 
+    color: white;
+}
+
+.delete-button {
+    background-color: #FF4136; 
+    color: white;
+}
+
+.edit-button:hover, .delete-button:hover {
+    opacity: 0.9; 
+}

@@ -1,0 +1,59 @@
+.add-task-card {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%); /*Pulls it left*/
+    width: 970px;
+    max-width: 100%;
+    background-color: #f3f4f6;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+}
+
+.add-task-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    flex-grow: 1;  /* makes the inputs go past halfway point */
+    align-items: center;
+    gap: 10px; 
+}
+
+.task-input, .description-input {
+    flex-grow: 1; /* Makes the inputs even in the card*/
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    resize: none;
+}
+
+.task-input {
+    min-width: 0; 
+}
+
+.description-input {
+    min-height: 80px; 
+    flex-grow: 2; 
+}
+
+.add-task-button {
+    background: none;
+    border: none;
+    color: #007BFF;
+    cursor: pointer;
+    font-size: 24px;
+    outline: none;
+}
+
+.add-task-button:hover {
+    color: #0056b3;
+}
+

@@ -98,4 +98,8 @@ I set up all of the components in their own file along with the css file that th
 
 ```
 
+I ended up creating an additional TaskManager component to hold all of my crazy spaghetti code such as my backend api fetches and modal open / close logic
+
+Had to re-learn parent and child components because it was the first time utilizing them in some time. 
+
 
