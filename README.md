@@ -1,3 +1,5 @@
+![alt text](public/App.png)
+
 # To Do App
 To Do List app utilizing React.js and Django Backend
 
