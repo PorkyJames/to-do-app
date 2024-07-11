@@ -6,10 +6,10 @@ from datetime import datetime
 
 # Add the project root directory to the Python path
 # Had to add an extra pathway to find my todo folder / seed properly. Otherwise, I get a backend module not found error
-project_path = '/home/kwanj/projects/To-Do/my_project'
-sys.path.append(project_path)
+sys.path.append('/home/kwanj/projects/To-Do/my_project') 
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
+
 django.setup()
 
 from todo.models import Task
