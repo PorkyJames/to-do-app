@@ -8,7 +8,7 @@ from datetime import datetime
 # Had to add an extra pathway to find my todo folder / seed properly. Otherwise, I get a backend module not found error
 sys.path.append('/home/kwanj/projects/To-Do/my_project') 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "my_project.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 django.setup()
 
 from todo.models import Task
