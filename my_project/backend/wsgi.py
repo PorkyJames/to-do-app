@@ -12,7 +12,10 @@ import sys
 
 from django.core.wsgi import get_wsgi_application
 
-sys.path.append('/home/kwanj/projects/To-Do/my_project') 
+# Add the project directory to the sys.path
+project_path = '/home/kwanj/projects/To-Do/my_project'
+sys.path.append(project_path)
+print(f"Added {project_path} to sys.path")
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 
