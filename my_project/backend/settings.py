@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-uj%3ys4zk!5j0759maeqlq^g*ue&2k$oftr#8jqx$ov0nd3%8c'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'optional_default_secret_key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-    '35.86.247.213'
+    '35.86.247.213',
+    'localhost',
+    'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
+
 ]
 
 
@@ -58,7 +63,8 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000'
-    '35.86.247.213'
+    '35.86.247.213',
+    'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
 ]
 
 ROOT_URLCONF = 'backend.urls'
