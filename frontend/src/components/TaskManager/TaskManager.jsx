@@ -6,8 +6,6 @@ import DeleteTaskModal from "../DeleteTaskModal/DeleteTaskModal";
 
 import "./TaskManager.css"
 
-
-
 const TaskManager = () => {
 
     const [tasks, setTasks] = useState([]);
@@ -39,7 +37,7 @@ const TaskManager = () => {
     //! Then we set the tasks to whatever the data that's been provided.
     //! Remember, this useEffect will fetch the server data with all of my previous tasks
     const fetchTasks = async () => {
-        const url = `${process.env.REACT_APP_API_URL}/todos/`
+        const url = `52.37.198.17:8000/api/todos/`
         try {
             const res = await fetch(url);
 
@@ -57,6 +55,26 @@ const TaskManager = () => {
     useEffect(() => {
         fetchTasks();
     }, []); 
+
+    // const fetchTasks = async () => {
+    //     const url = `http://localhost:8000/api/todos/`
+    //     try {
+    //         const res = await fetch(url);
+
+    //         if (!res.ok) throw new Error('Failed to fetch tasks');
+            
+    //         const tasksData = await res.json();
+
+    //         setTasks(tasksData);  
+
+    //     } catch (error) {
+    //         console.error('Error fetching tasks:', error);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     fetchTasks();
+    // }, []); 
 
     //! Add a task to our list of tasks from the backend via the frontend
     //! We take taskTitle and description that's been input by the user

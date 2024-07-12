@@ -28,7 +28,8 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'optional_default_secret_key')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '35.86.247.213',
+    # '35.86.247.213',
+    
     'localhost',
     'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
 
@@ -62,8 +63,9 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-    '35.86.247.213',
+    'http://localhost:3000',
+    'http://localhost:8000',
+    # '35.86.247.213',
     'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
 ]
 
