@@ -21,8 +21,8 @@ const AddTaskForm = ( { addTask }) => {
     return (
         <>
             <div className="add-task-card">
+                
                 <form onSubmit={handleSubmit} className="add-task-form">
-                    <button type='submit' className="add-task-button">➕</button>
 
                     <div className="input-container">
                         <input
@@ -41,6 +41,8 @@ const AddTaskForm = ( { addTask }) => {
                         />
 
                     </div>
+
+                    <button type='submit' className="add-task-button">➕</button>
                 </form>
             </div>
         </>

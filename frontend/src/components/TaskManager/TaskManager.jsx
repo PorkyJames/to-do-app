@@ -56,6 +56,7 @@ const TaskManager = () => {
         fetchTasks();
     }, []); 
 
+    //! For Testing purposes on Local Host
     // const fetchTasks = async () => {
     //     const url = `http://localhost:8000/api/todos/`
     //     try {
