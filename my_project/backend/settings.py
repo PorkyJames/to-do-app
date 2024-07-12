@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     # '35.86.247.213',
     '52.37.198.17',
     'localhost',
-    'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
+    'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com',
 
 ]
 
@@ -66,7 +66,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
     'http://localhost:8000',
     # '35.86.247.213',
-    'http://52.37.198.17:8000'
+    'http://52.37.198.17:8000',
     'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
 ]
 
