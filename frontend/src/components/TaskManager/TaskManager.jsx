@@ -37,7 +37,7 @@ const TaskManager = () => {
     //! Then we set the tasks to whatever the data that's been provided.
     //! Remember, this useEffect will fetch the server data with all of my previous tasks
     const fetchTasks = async () => {
-        const url = `52.37.198.17:8000/api/todos/`
+        const url = `http://52.37.198.17:8000/api/todos/`
         try {
             const res = await fetch(url);
 
