@@ -28,10 +28,10 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'optional_default_secret_key')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    # '35.86.247.213',
     '52.37.198.17',
     'localhost',
-    'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com',
+    'jamestodoappbucket.s3-website-us-west-2.amazonaws.com',
+    # '35.86.247.213',
 
 ]
 
@@ -54,20 +54,20 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-    'http://localhost:8000',
-    # '35.86.247.213',
     'http://52.37.198.17:8000',
     'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
+    # 'http://localhost:8000',
+    # '35.86.247.213',
 ]
 
 ROOT_URLCONF = 'backend.urls'
