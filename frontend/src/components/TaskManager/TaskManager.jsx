@@ -80,7 +80,7 @@ const TaskManager = () => {
     //! We take taskTitle and description that's been input by the user
     //! Then we add it to our request in a JSON body. Then we add that to our existing tasks
     const addTask = async (taskTitle, description) => {
-        const url = `${process.env.REACT_APP_API_URL}/todos/`;
+        const url = `http://52.37.198.17:8000/api/todos/`;
         try {
             const res = await fetch(url, {
                 method: 'POST',
@@ -111,7 +111,7 @@ const TaskManager = () => {
     //! If true, then the task was updated. If false, then it wasn't the one we updated.
     //! Then we close the edit modal right after everything is updated.
     const saveTask = async (updatedTask) => {
-        const url = `${process.env.REACT_APP_API_URL}/todos/${updatedTask.id}/`
+        const url = `http://52.37.198.17:8000/api/todos/${updatedTask.id}/`
         try {
             const res = await fetch(url, {
                 method: 'PUT', 
@@ -138,7 +138,7 @@ const TaskManager = () => {
     //! Then re-update the state of our tasks by filtering for any tasks with the same id.
     //! Then we close that modal once we're done deleting. 
     const deleteTask = async (taskId) => {
-        const url = `${process.env.REACT_APP_API_URL}/todos/${taskId}/`;
+        const url = `http://52.37.198.17:8000/api/todos/${taskId}/`;
         try {
             const res = await fetch(url, {
                 method: 'DELETE',

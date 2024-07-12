@@ -1,7 +1,7 @@
 /* The card that surrounds the entirety of the to do list tasks */
 .task-list-container {
     width: 80%; 
-    max-height: 750px; /* limit height for scroll effect */
+    max-height: 600px; /* limit height for scroll effect */
     overflow-y: auto; /* creates the scroll effect*/
     max-width: 1000px; 
     margin: 20px auto; 
