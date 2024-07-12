@@ -29,7 +29,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     # '35.86.247.213',
-    
+
     'localhost',
     'http://jamestodoappbucket.s3-website-us-west-2.amazonaws.com'
 
